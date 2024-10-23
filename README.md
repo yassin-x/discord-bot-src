@@ -17,5 +17,5 @@ npm install
 
 # Source Code Created By : Yassin Ibrahim
 
-My Web : https://www.yassin.icu
-My Discord Profile : https://discord.com/users/526025530827603978
+- My Web : https://www.yassin.icu
+- My Discord Profile : https://discord.com/users/526025530827603978
