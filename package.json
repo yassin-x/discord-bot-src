@@ -1,6 +1,6 @@
 {
-  "name": "v1.0.0",
-  "version": "1.0.0",
+  "name": "discord",
+  "version": "2.5.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,9 @@
   "dependencies": {
     "chokidar": "^4.0.1",
     "discord.js": "^14.16.2",
+    "dotenv": "^16.4.5",
     "fs": "^0.0.1-security",
+    "moment": "^2.30.1",
     "mongodb": "^6.9.0",
     "mongoose": "^8.6.3",
     "path": "^0.12.7"

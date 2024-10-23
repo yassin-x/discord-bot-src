@@ -4,4 +4,4 @@
 .pnp.js
 
 
-/config.json
+.env

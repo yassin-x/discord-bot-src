@@ -1,6 +1,5 @@
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
-const fs = require("fs");
-const path = require("path");
+require("dotenv").config();
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -12,6 +11,7 @@ const client = new Client({
 const connectDB = require("./utils/db/database.js");
 connectDB();
 client.commands = new Collection();
+client.coolDowns = new Collection();
 client.slashCommands = new Collection();
 client.allCommands = [];
 
@@ -21,5 +21,4 @@ loadCommands(client);
 const { loadEvents } = require("./utils/handler/eventHandler");
 loadEvents(client);
 
-const { token } = require("./config.json");
-client.login(token);
+client.login(process.env.token);

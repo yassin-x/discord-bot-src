@@ -1,9 +1,10 @@
-const Users = require("../../../utils/models/user.js");
+const Users = require("../../../utils/models/blacklist.js");
 
 module.exports = {
   dataCommand: {
     name: "register",
     aliases: ["reg"],
+    perms: { member: "ManageMessages", bot: "ManageMessages" },
     description: "Register a new user",
     run: async (client, message) => {
       const user = new Users({
@@ -22,6 +23,7 @@ module.exports = {
   dataSlash: {
     name: "register",
     description: "Register a new user",
+    perms: { bot: "ManageMessages" },
     options: [
       {
         name: "user",

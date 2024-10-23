@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-
+const Command = require("../models/commands");
 function loadCommands(client) {
   client.allCommands = [];
 
@@ -9,7 +9,7 @@ function loadCommands(client) {
   loadCommandsFromDirectory(client, commandsDir);
 }
 
-function loadCommandsFromDirectory(client, dir) {
+async function loadCommandsFromDirectory(client, dir) {
   const commandFiles = fs.readdirSync(dir);
 
   for (const file of commandFiles) {
@@ -29,6 +29,14 @@ function loadCommandsFromDirectory(client, dir) {
           permission: command.dataCommand.permission || "None",
           type: "prefix",
         });
+
+        const newCommand = await new Command({
+          name: command.dataCommand.name,
+          aliases: command.dataCommand.aliases || [],
+          permission: command.dataCommand.permission || [],
+          type: "prefix",
+        });
+        await newCommand.save();
       }
 
       if (command.dataSlash) {
@@ -38,6 +46,13 @@ function loadCommandsFromDirectory(client, dir) {
           permission: command.dataSlash.permission || "None",
           type: "slash",
         });
+
+        const newCommand = await new Command({
+          name: command.dataSlash.name,
+          permission: command.dataSlash.permission || [],
+          type: "slash",
+        });
+        await newCommand.save();
       }
     }
   }
